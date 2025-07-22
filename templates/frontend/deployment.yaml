@@ -23,10 +23,6 @@ spec:
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.frontend.containerPort }}
-          volumeMounts:
-            - name: env-volume
-              mountPath: {{ .Values.frontend.envJsMountPath }}
-              subPath: env.js
           resources:
             requests:
               memory: {{ .Values.frontend.resources.requests.memory }}
@@ -46,7 +42,4 @@ spec:
               port: {{ .Values.frontend.probes.readiness.port }}
             initialDelaySeconds: {{ .Values.frontend.probes.readiness.initialDelaySeconds }}
             periodSeconds: {{ .Values.frontend.probes.readiness.periodSeconds }}
-      volumes:
-        - name: env-volume
-          configMap:
-            name: {{ .Values.frontend.configMapName }}
+

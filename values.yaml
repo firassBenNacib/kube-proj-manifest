@@ -38,8 +38,6 @@ frontend:
     type: ClusterIP
     port: 80
     targetPort: 80
-  configMapName: frontend-env
-  envJsMountPath: /usr/share/nginx/html/assets/env.js
   resources:
     requests:
       memory: "256Mi"
