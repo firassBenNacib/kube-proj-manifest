@@ -1,0 +1,96 @@
+backend:
+  namespace: backend
+  name: backend
+  image:
+    repository: 392159838427.dkr.ecr.us-east-1.amazonaws.com/backend
+    tag: latest
+    pullPolicy: Always
+  replicas: 1
+  containerPort: 8088
+  imagePullSecretName: ecr-secret
+
+  service:
+    name: backend-service
+    type: ClusterIP
+    port: 80
+    targetPort: 8088
+
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+  configMapName: backend-config
+  secretName: db-credentials
+
+  configMapData:
+    SPRING_DATASOURCE_URL: jdbc:mysql://mysql.database.svc.cluster.local:3306/VaccinationApp?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+
+frontend:
+  namespace: frontend
+  name: frontend
+  image:
+    repository: 392159838427.dkr.ecr.us-east-1.amazonaws.com/frontend
+    tag: latest
+    pullPolicy: Always
+  containerPort: 80
+  imagePullSecretName: ecr-secret
+
+  service:
+    name: frontend-service
+    type: ClusterIP
+    port: 80
+    targetPort: 80
+
+  configMapName: frontend-env
+  envJsMountPath: /usr/share/nginx/html/assets/env.js
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "250m"
+
+  probes:
+    liveness:
+      path: /
+      port: 80
+      initialDelaySeconds: 15
+      periodSeconds: 15
+    readiness:
+      path: /
+      port: 80
+      initialDelaySeconds: 5
+      periodSeconds: 10
+
+mysql:
+  namespace: database
+  name: mysql
+  image:
+    repository: mysql
+    tag: "8.0"
+    pullPolicy: IfNotPresent
+  containerPort: 3306
+  pvcName: mysql-pvc
+
+  service:
+    name: mysql
+    type: ClusterIP
+    port: 3306
+    targetPort: 3306
+
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+  secretName: mysql-secret
+  configMapName: mysql-config

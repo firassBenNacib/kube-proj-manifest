@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.backend.configMapName }}
+  namespace: {{ .Values.backend.namespace }}
+data:
+  SPRING_DATASOURCE_URL: {{ .Values.backend.configMapData.SPRING_DATASOURCE_URL | quote }}

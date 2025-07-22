@@ -1,0 +1,9 @@
+apiVersion: v2
+name: kube-proj
+description: A Helm chart for Kubernetes and ArgoCD
+
+type: application
+
+version: 0.1.1
+
+appVersion: "1.20.0"
