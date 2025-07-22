@@ -3,7 +3,7 @@ backend:
   name: backend
   image:
     repository: 392159838427.dkr.ecr.us-east-1.amazonaws.com/backend
-    tag: "43"
+    tag: "55"
     pullPolicy: Always
   replicas: 1
   containerPort: 8088
