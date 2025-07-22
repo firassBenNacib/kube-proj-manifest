@@ -29,7 +29,7 @@ frontend:
   name: frontend
   image:
     repository: 392159838427.dkr.ecr.us-east-1.amazonaws.com/frontend
-    tag: "35"
+    tag: "37"
     pullPolicy: Always
   containerPort: 80
   imagePullSecretName: ecr-secret
