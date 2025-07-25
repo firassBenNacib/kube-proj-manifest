@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/firassBenNacib/kube-proj-manifest.git
     targetRevision: HEAD   
-    path: meaifest              
+    path: manifest              
     helm:
       valueFiles:
         - values.yaml
