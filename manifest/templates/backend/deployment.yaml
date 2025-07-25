@@ -20,8 +20,7 @@ spec:
       labels:
         app: {{ .Values.backend.name }}
     spec:
-      imagePullSecrets:
-        - name: {{ .Values.backend.imagePullSecretName }}
+      serviceAccountName: {{ .Values.backend.serviceAccountName }}
       containers:
         - name: {{ .Values.backend.name }}
           image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
