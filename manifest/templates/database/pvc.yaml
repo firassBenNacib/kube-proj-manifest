@@ -6,8 +6,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
-  volumeName: mysql-pv
   resources:
     requests:
       storage: 1Gi
+  storageClassName: gp3
