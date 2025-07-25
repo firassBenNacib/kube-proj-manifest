@@ -3,7 +3,7 @@ backend:
   name: backend
   image:
     repository: 392159838427.dkr.ecr.us-east-1.amazonaws.com/backend
-    tag: "60"
+    tag: "latest"
     pullPolicy: Always
   replicas: 2
   containerPort: 8088
@@ -29,7 +29,7 @@ frontend:
   name: frontend
   image:
     repository: 392159838427.dkr.ecr.us-east-1.amazonaws.com/frontend
-    tag: "61"
+    tag: "latest"
     pullPolicy: Always
   containerPort: 80
   imagePullSecretName: ecr-secret
