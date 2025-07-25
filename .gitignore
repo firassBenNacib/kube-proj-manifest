@@ -8,8 +8,8 @@ Thumbs.db
 *.zip
 *.tar.gz
 charts/
-templates/secrets/*
-templates/**/secret.yaml
+manifest/templates/secrets/*
+manifest/templates/**/secret.yaml
 secrets/
 values.secret.yaml
 values.override.yaml
