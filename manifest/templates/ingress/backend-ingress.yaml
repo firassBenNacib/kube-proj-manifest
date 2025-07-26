@@ -19,4 +19,4 @@ spec:
               service:
                 name: backend-service
                 port:
-                  number: 8088
+                  number: 80
